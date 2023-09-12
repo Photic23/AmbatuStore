@@ -1,6 +1,7 @@
 Nama    : Naufal Mahdy Hanif
 NPM     : 2206082335
 Kelas   : E
+Adaptable : https://ambatustore.adaptable.app/
 
 1.
 - Cara menyelesaikan checklist membuat project baru, saya membuat direktori baru lalu menginisiasi git pada direktori tersebut.
