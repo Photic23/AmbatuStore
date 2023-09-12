@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Items</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg " style="background-color: #542ff7;">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color: white;" href="/"><img src="https://i1.sndcdn.com/artworks-188hqnt2xfmNCACs-iZ9Qng-t500x500.jpg" style="height: 35px; width: 35px; border-radius: 10px;" alt=""><b>AmbatuStore</b></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/" style="color: white;">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/items" style="color: white;"><strong>Items</strong></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <!-- navbar -->
+    <h1>ITEM</h1>
+    <!--Item Table-->
+    <table class="table table-bordered">
+        <caption>List of items</caption>
+        <thead class="table-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>{{name}}</td>
+            <td>{{description}}</td>
+            <td>{{amount}}</td>
+          </tr>
+          <!--kalo kurang row tambah pake <tr></tr>-->
+        </tbody>
+      </table>
+    <!--Item Table-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>
