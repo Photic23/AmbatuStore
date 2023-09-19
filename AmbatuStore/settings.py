@@ -53,6 +53,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "AmbatuStore.urls"
 
+CSRF_TRUSTED_ORIGINS = ['https://ambatustore.adaptable.app']
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
