@@ -3,6 +3,8 @@ NPM     : 2206082335
 Kelas   : E
 Adaptable : https://ambatustore.adaptable.app/
 
+
+Tugas 2 :
 1.
 - Cara menyelesaikan checklist membuat project baru, saya membuat direktori baru lalu menginisiasi git pada direktori tersebut.
 - Saya mengkonfigurasi git pada direktori tersebut.
@@ -27,3 +29,24 @@ saya melakukan migrasi model lalu mendefine fungsi untuk merender tampilan html 
 - MVT adalah konsep arsitektur web yang memisahkan komponen-komponen utama dari webapp tersebut. Model yang dimaksud adalah komponen yang bertugas untuk mengelola data dari aplikasi, komponen yang bertugas pada bidang logika dan struktur data. View adalah komponen yang menangani presentasi, tampilan yang akan disajikan pengatur data dari model untuk ditampilkan. Template adalah komponen untuk tampilan yang digunakan untuk menstruktur data dari view pada tampilan untuk user.
 - MVC adalah model yang membagi pengembangan webapp pada tiga komponen. Model adalah komponen yang menyimpan data aplikasi, model bertanggung jawab untuk mengatur logic dan komunikasi dengan database. View bertanggung jawab untuk user interface. COntroller bertanggung jawab untuk membangun hubungan antara model dan view.
 - MVVM memiliki model yang memiliki tiga komponen, yaitu Model, View, dan ViewModel. Model adalah komponen yang bertangungjawab pada abstraksi dari sumber data. View adalah komponen yang bertanggungjawab untuk memberitahu viewmodel tentang aksi dari user. Viewmodel adalah komponen yang menghubungkan model dan view. Viewmodel juga bertanggungjawab untuk pengolahan.
+
+Tugas 2:
+1. POST adalah method yang digunakan untuk submit data atau mengirim data ke database atau API, sedangkan GET adalah method untuk mengambil data atau fetch data dari database atau API.
+2. HTML mempresentasikan object data dalam struktur saat web diload
+    XML merepresentasikan data dalam bentuk pohon yang memiliki anak, setiap elemen dimuat dalam sebuah tag yang memiliki closing tag
+    JSON merepresentasikan data dalam bentuk yang mirip javascript object, data dalam bentuk name/value, lebih mudah digunakan daripada xml
+3. JSON lebih dipilih karena compact, simpel, lebih cepat untuk diparse dan dibuat untuk aplikasi AJAX.
+4. 
+- Saya menmbuat forms berdasarkan model yang sudah saya buat di forms.py
+- saya membuat fungsi di views untuk menyimpan data yang disubmit oleh forms POST.
+- saya membuat fungsi di views untuk fetch data dari database baik dengan filter maupun untuk semua object item, yang data tersebut akan digunakan di show_items, show_json, show_xml, show_json_by_id, show_xml_by_id.
+- saya membuat path url untuk mengakses fungsi pada views.py
+- saya mengkustomisasi page html agar dapat menerima data yang disediakan dari views.py dan juga dapat menjalankan beberapa perintah seperti for loop untuk membuat row table sesuai jumlah data yang ada.
+- saya memberi sedikit styling pada page-page yang sudah ada di folder static, dan mengkonfigurasi direktori static di settings.py, lalu menginclude static pada template yang sudah ada.
+- saya menambah bonus dengan menampilkan jumlah item yang ada di menu item
+5. 
+- ![HTML ONLY](static\screenshots\SS HTML.png)
+- ![JSON ID](static\screenshots\SS JSON ID.png)
+- ![JSON ONLY](static\screenshots\SS JSON.png)
+- ![XML ID](static\screenshots\SS XML ID.png)
+- ![XML ONLy](static\screenshots\SS XML.png)

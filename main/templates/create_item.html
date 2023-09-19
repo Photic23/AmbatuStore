@@ -1,0 +1,182 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script src="../assets/js/color-modes.js"></script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.118.2">
+    <title>Checkout example · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'styles/checkout.css' %}" rel="stylesheet">
+  </head>
+  <body class="bg-body-tertiary">
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg " style="background-color: #542ff7;">
+        <div class="container-fluid">
+        <a class="navbar-brand" style="color: white;" href="/"><img src="https://i1.sndcdn.com/artworks-188hqnt2xfmNCACs-iZ9Qng-t500x500.jpg" style="height: 35px; width: 35px; border-radius: 10px;" alt=""><b> AmbatuStore</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/" style="color: white;">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/items" style="color: white;">Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/create-item" style="color: white;"><strong>Create</strong></a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <!-- navbar -->    
+   
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="https://i1.sndcdn.com/artworks-188hqnt2xfmNCACs-iZ9Qng-t500x500.jpg" style="border-radius: 10px;" alt="" width="72" height="57">
+      <h2>Tambahin Item Kang</h2>
+      <p class="lead">Isi tiga atribut di bawah ya kang, Name, Amount, Description. Semua atribut diisi pake string. KHUSUS BUAT CAESAR SYAHRU PLIS JANGAN NAMBAHIN ANEH-ANEH, GW BOM KOS LO KALO SAMPE DI DB GW ADA ITEM ANEH</p>
+    </div>
+    
+
+    <div class="row g-5">
+      <div class="col-md-12 col-lg-12">
+        <h4 class="mb-3">Item Baruuu</h4>
+          <form action="{% url 'main:create_item' %}" method="POST">
+            {% csrf_token %}
+            <div class="row g-3">
+              <div class="col-sm-12">
+                <label for="itemName" class="form-label">Item Name</label>
+                <div class="form-control">
+                  {% render_field form.name class="form-control" placeholder="Item Name" type="text" %}
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <label for="itemAmount" class="form-label">Amount of Item</label>
+                <div class="form-control">
+                  {% render_field form.amount class="form-control" placeholder="Item Amount" type="text" %}
+                </div>
+              </div>
+
+              <div class="col-sm-12">
+                <label for="itemDesc" class="form-label">Item Description</label>
+                <div class="form-control">
+                  {% render_field form.description class="form-control" placeholder="Item Description" type="text" %}
+                </div>
+              </div>
+
+            <hr class="my-4">
+            <div>
+              <button class="w-100 btn btn-primary btn-lg" style="background-color: #542ff7;" type="submit" value="Submit">Make Item</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+    <p class="mb-1">&copy; AmbatuStore</p>
+  </footer>
+</div>
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="{% static 'scripts/checkout.js' %}"></script></body>
+</html>
