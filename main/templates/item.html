@@ -20,12 +20,15 @@
           <li class="nav-item">
               <a class="nav-link" href="/create-item" style="color: white;">Create</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'main:logout' %}" style="color: white;">Logout</a>
+          </li>
           </ul>
       </div>
       </div>
   </nav>
  <!-- navbar -->
-    <h1>ITEM</h1>
+    <h1>{{username}}'s Items</h1>
     <!--Item Table-->
     <table class="table table-bordered">
         <caption class=""> {{itemCount}} Items in total</caption>

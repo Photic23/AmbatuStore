@@ -30,7 +30,7 @@ saya melakukan migrasi model lalu mendefine fungsi untuk merender tampilan html 
 - MVC adalah model yang membagi pengembangan webapp pada tiga komponen. Model adalah komponen yang menyimpan data aplikasi, model bertanggung jawab untuk mengatur logic dan komunikasi dengan database. View bertanggung jawab untuk user interface. COntroller bertanggung jawab untuk membangun hubungan antara model dan view.
 - MVVM memiliki model yang memiliki tiga komponen, yaitu Model, View, dan ViewModel. Model adalah komponen yang bertangungjawab pada abstraksi dari sumber data. View adalah komponen yang bertanggungjawab untuk memberitahu viewmodel tentang aksi dari user. Viewmodel adalah komponen yang menghubungkan model dan view. Viewmodel juga bertanggungjawab untuk pengolahan.
 
-Tugas 2:
+Tugas 3:
 1. POST adalah method yang digunakan untuk submit data atau mengirim data ke database atau API, sedangkan GET adalah method untuk mengambil data atau fetch data dari database atau API.
 2. HTML mempresentasikan object data dalam struktur saat web diload
     XML merepresentasikan data dalam bentuk pohon yang memiliki anak, setiap elemen dimuat dalam sebuah tag yang memiliki closing tag
@@ -50,3 +50,26 @@ Tugas 2:
 - ![JSON ONLY](static\screenshots\SS JSON.png)
 - ![XML ID](static\screenshots\SS XML ID.png)
 - ![XML ONLy](static\screenshots\SS XML.png)
+
+Tugas 4:
+1. usercreationform adalah sebuah kelas di django yang dapat digunakan untuk menciptakan user pada django, kita tidak perlu membuat form user lagi secara manual namun bisa menggunakan usercreationform. kelebihan dari menggunakan usercreationform adalah dapat wujudnya yang bisa digunakan langsung tanpa perlu banyak menulis kode lagi, sementara kekurangan dari usercreationform adalah kustomisasi yang minim, dan field yang bisa ditebak.
+
+2. Autentikasi adalah proses memverifikasi siapa kita, sementara Autorisasi adalah proses untuk memastikan bahwakita memiliki akses untuk sesuatu. Keduanya penting untuk menjaga bagian-bagian dari web-app berdasarkan privilege sehingga terhindar dari hal-hal yang tidak diinginkan.
+
+3. Lebih aman jika dibanding denang persistent cookie. Namun, default session cookie masih memiliki beberapa potensi kelemahan seperti bisa ditap jika kita mengakses web melalui public network. Orang lain bisa menyalahgunakan cookie yang diambil tersebut.
+
+4. 
+- Saya mengimport modul yang dibutuhkan untuk redirect, menggunakan usercreationform, memberi pesan, autentikasi, login, dan logout
+- Saya membuat fungsi register dan login pada views.py, pada register saya menggunakan usercreationform sebagai form.
+- saya mengimpor kedua fungsi tersebut ke urls.py lalu membuat path untuk kedua fungsi tersebut.
+- saya menyiapkan templates untuk halaman register dan login, kedua templates tersebut saya hubungkan dengan stylesheet dan script bootstrap
+- saya mengutilisasi package widget tweaks untuk memberi class pada input-input form di halaman register
+- saya membuat fungsi untuk logout pada views.py, lalu menngimpor fungsi logout di urls.py dan membuat path untuk logout
+- saya menambahkan button logout pada navbar untuk semua page, kecuali page login dan register
+- saya merestriksi akses halaman main, create_item, dan item dengan login_required
+- saya menset cookie last_login pada fungsi login, dan menambahkan request.user.username pada menu main dan item
+- saya menambahkan atribut last_login menggunakan cookie last_login pada halaman main
+- saya juga menambahkan untuk menghapus cookie pada logout
+- saya membuat hubungan antara model item dengan user, meggunakan foreignkey, sehingga item terhubung dengan user. fungsi seperti create item juga saya ubah untuk menyesuaikan.
+- pada fungsi show_item, saya menunjukkan item berdasarkan filter user yang saat ini sedang mengakses.
+- saya melakukan migrasi dan selesai.

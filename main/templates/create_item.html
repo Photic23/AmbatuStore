@@ -121,6 +121,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/create-item" style="color: white;"><strong>Create</strong></a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'main:logout' %}" style="color: white;">Logout</a>
+            </li>
             </ul>
         </div>
         </div>
@@ -139,7 +142,7 @@
     <div class="row g-5">
       <div class="col-md-12 col-lg-12">
         <h4 class="mb-3">Item Baruuu</h4>
-          <form action="{% url 'main:create_item' %}" method="POST">
+          <form method="POST">
             {% csrf_token %}
             <div class="row g-3">
               <div class="col-sm-12">
