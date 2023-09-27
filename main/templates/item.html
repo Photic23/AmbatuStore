@@ -38,6 +38,7 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Amount</th>
+            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -47,6 +48,16 @@
               <td>{{item.name}}</td>
               <td>{{item.description}}</td>
               <td>{{item.amount}}</td>
+              <td>
+                <form method="POST">
+                  {% csrf_token %}
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="submit" name="inc" value={{item.id}} class="btn btn-primary" style="background-color: #542ff7;color: white;"> (+) </button>
+                    <button type="submit" name="del" value={{item.id}} class="btn btn-primary" style="background-color: #542ff7;color: white;"> Del </button>
+                    <button type="submit" name="dec" value={{item.id}} class="btn btn-primary" style="background-color: #542ff7;color: white;"> (-) </button>
+                  </div>
+                </form>
+              </td>
             </tr>
           {% endfor %}
           <!--kalo kurang row tambah pake <tr></tr>-->

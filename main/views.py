@@ -46,6 +46,20 @@ def create_item(request):
 def show_items(request):
     items = item.objects.filter(user=request.user)
     countItem = items.count()
+    if (request.method == 'POST'):
+        if 'inc' in request.POST:
+            tempPatchedItem = items.get(pk = request.POST.get('inc'))
+            patchedItem = items.filter(pk = request.POST.get('inc'))
+            newAmount = tempPatchedItem.amount + 1
+            patchedItem.update(amount = newAmount)
+        elif 'dec' in request.POST:
+            tempPatchedItem = items.get(pk = request.POST.get('dec'))
+            patchedItem = items.filter(pk = request.POST.get('dec'))
+            newAmount = tempPatchedItem.amount -1
+            patchedItem.update(amount = newAmount)
+        elif 'del' in request.POST:
+            deletedItem = items.get(pk = request.POST.get('del'))
+            deletedItem.delete()
     context = {
         'username': request.user.username,
         'items' : items,

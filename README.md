@@ -73,3 +73,4 @@ Tugas 4:
 - saya membuat hubungan antara model item dengan user, meggunakan foreignkey, sehingga item terhubung dengan user. fungsi seperti create item juga saya ubah untuk menyesuaikan.
 - pada fungsi show_item, saya menunjukkan item berdasarkan filter user yang saat ini sedang mengakses.
 - saya melakukan migrasi dan selesai.
+- saya sempat menambahkan metode untuk update amount dan delete item dengan menambahkan value id pada button dan memberi nama button lalu mengakses via fungsi create_item di views.py
