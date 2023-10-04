@@ -120,3 +120,21 @@ Tugas 5:
     - <th>, define head pada table
     - <tr>, define row pada table
     - <title>, define judul pada dokumen
+3. Bootstrap :
+    - Bootstrap menggunakan gaya dan komponen yang telah didefinisikan, yang memiliki tampilan yang sudah jadi dan dapat digunakan secara langsung.
+    - Bootstrap memiliki file CSS yang lebih besar dibandingkan dengan Tailwind CSS karena termasuk banyak komponen yang telah didefinisikan.
+    - Bootstrap sering kali menghasilkan tampilan yang lebih konsisten di seluruh proyek karena menggunakan komponen yang telah didefinisikan.
+   Tailwind :
+    - Tailwind CSS membangun tampilan dengan menggabungkan kelas-kelas utilitas yang telah didefinisikan sebelumnya.
+    - Tailwind CSS memiliki file CSS yang lebih kecil sedikit dibandingkan Bootstrap dan hanya akan memuat kelas-kelas utilitas yang ada
+    - Tailwind CSS memiliki memberikan fleksibilitas dan adaptabilitas tinggi terhadap proyek
+  Jika kita menginginkan website yang dapat dibuat dengan cepat dan mudah, dan tentunya dengan design yang terdapat pada komponen bootstrap, maka dapat menggunakan bootstrap. Apabila menginginkan kustomisasi lebih, maka bisa menggunakan tailwind
+4.  - saya sudah melakukan styling dari tugas sebelumnya menggunakan bootstrap
+    - saya menambahkan card pada menu inventori
+    - pada forloop saya memberikan if jika elemen terakhir
+    - element terakhir dari card saya beri gradient animation
+    - saya menambahkan image pada model dan form
+    - saya menambahkan konfigurasi media pada settings
+    - saya menambahkan fungsi penamaan file gambar pada model
+    - saya menggunakan dropzone dari github untuk bisa custom input image pada create_item
+    - saya menggunakan image url untuk mendisplay image pada show item

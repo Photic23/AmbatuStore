@@ -32,9 +32,7 @@ def show_main(request):
 @login_required(login_url='/login')
 def create_item(request):
     form = ItemForm(request.POST or None)
-
     if request.method == "POST":
-        form = ItemForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save(commit=False)
             product.user = request.user
