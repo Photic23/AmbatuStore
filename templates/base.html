@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
         <meta charset="UTF-8" />
         <meta
@@ -11,6 +12,25 @@
         <title>AmbatuStore</title>
         {% block meta %}
         {% endblock meta %}
+        <style>
+            .gradient-background {
+                background: linear-gradient(300deg, #00ff9f, #00b8ff, #d600ff);
+                background-size: 180% 180%;
+                animation: gradient-animation 18s ease infinite;
+            }
+            
+            @keyframes gradient-animation {
+                0% {
+                background-position: 0% 50%;
+                }
+                50% {
+                background-position: 100% 50%;
+                }
+                100% {
+                background-position: 0% 50%;
+                }
+            }
+        </style>
     </head>
 
         {% block content %}

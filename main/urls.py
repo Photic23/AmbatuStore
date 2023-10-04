@@ -1,6 +1,7 @@
 from django.urls import path
 from main.views import show_main, show_items, create_item, show_xml, show_json, show_json_by_id, show_xml_by_id, register, login_user, logout_user
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'main'
 
@@ -15,4 +16,4 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', login_user, name='login'), 
     path('logout/', logout_user, name='logout'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

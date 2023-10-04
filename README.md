@@ -74,3 +74,49 @@ Tugas 4:
 - pada fungsi show_item, saya menunjukkan item berdasarkan filter user yang saat ini sedang mengakses.
 - saya melakukan migrasi dan selesai.
 - saya sempat menambahkan metode untuk update amount dan delete item dengan menambahkan value id pada button dan memberi nama button lalu mengakses via fungsi create_item di views.py
+
+
+
+Tugas 5:
+1. Untuk CSS terdapat element selector :
+    - #id, untuk memilih elemen dengan id yang ditulis
+    - .class, untuk memilih semua elemen dengan class yang ditulis
+    - element.class, memilih elemen dengan tag element yang ditulis dan memiliki class yang ditulis
+    - *, memilih semua elemen
+    - element, memilih semua tag elemen yang ditulis
+    - element1,element2,.., untuk memilih elemen yang merupakan anakan dari elemen sebelumnya (ex : element 2 yang merupakan anak dari element 1 dipilih)
+    - element di atas juga dapat dipilih menggunakan jquery.
+2. html tag yang saya ketahui:
+    - <!--...--> , untuk comment
+    - <!DOCTYPE> , menentukan doctype
+    - <a> , anchor tag untuk hyperlink
+    - <b>, untuk text bold
+    - <body> , untuk define bagian body dari html
+    - <br> , untuk memberi break
+    - <button> , untuk memberi button
+    - <div>, untuk memberi bagian(divisi)
+    - <footer>, define bagian footer dari html
+    - <form>, untuk menangkap input user
+    - <h1> to <h6>, untuk headings
+    - <head>, untuk bagian metadata
+    - <header>, menentukan bagian header
+    - <img>, memasukkan gambar
+    - <input>, menyediakan tempat input
+    - <label>, label untuk input
+    - <link>, untuk memberi hubungan antara dokumen dan resource external
+    - <meta>, untuk memasukkan metadata
+    - <ol>, untuk ordered list
+    - <li>, untuk menulis isi list
+    - <ul>, untuk unordered list
+    - <p>, untuk paragraf
+    - <script>, untuk memberi client-side script
+    - <span>, untuk define sebuah bagian dokumen
+    - <section>, untuk define sebuah bagian dokumen
+    - <strong>, memberi highlight pada teks
+    - <style>, styling pada dokumen
+    - <table>, membuat table
+    - <tbody>, define body pada table
+    - <td>, define cell pada table
+    - <th>, define head pada table
+    - <tr>, define row pada table
+    - <title>, define judul pada dokumen

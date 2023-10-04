@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<body>
+<body style="background-color: #eee;">
   <!-- navbar -->
-  <nav class="navbar navbar-expand-lg " style="background-color: #542ff7;">
+  <nav class="navbar navbar-expand-lg " style="background-color: #6a11cb;">
       <div class="container-fluid">
       <a class="navbar-brand" style="color: white;" href="/"><img src="https://i1.sndcdn.com/artworks-188hqnt2xfmNCACs-iZ9Qng-t500x500.jpg" style="height: 35px; width: 35px; border-radius: 10px;" alt=""><b> AmbatuStore</b></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,9 +28,83 @@
       </div>
   </nav>
  <!-- navbar -->
-    <h1>{{username}}'s Items</h1>
-    <!--Item Table-->
-    <table class="table table-bordered">
+
+  <!--Item Table-->
+  <section style="background-color: #eee;">
+    <h1>{{itemCount}} {{username}}'s Items</h1>
+    <div class="container -5">
+      <div class="row justipyfy-content-center">
+      {% for item in items %}
+        {% if forloop.last %}
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black my-3 gradient-background">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="{{ item.image.url }}"
+                class="card-img-top" alt="Apple Computer" style="width: auto; aspect-ratio: 1 / 1;" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p class="text-muted mb-4">{{item.description}}</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Item Price</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Item Stock</span><span>{{item.amount}}</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                  <form method="POST">
+                    {% csrf_token %}
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="submit" name="inc" value={{item.id}} class="btn btn-light" style="background-color: #6a11cb;color: white;"> (+) </button>
+                      <button type="submit" name="del" value={{item.id}} class="btn btn-light" style="background-color: #6a11cb;color: white;"> Del </button>
+                      <button type="submit" name="dec" value={{item.id}} class="btn btn-light" style="background-color: #6a11cb;color: white;"> (-) </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>          
+        {% else %}
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black my-3">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="{{ item.image.url }}"
+                class="card-img-top" alt="Apple Computer" style="width: auto; aspect-ratio: 1 / 1;" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p class="text-muted mb-4">{{item.description}}</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Item Price</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Item Stock</span><span>{{item.amount}}</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                  <form method="POST">
+                    {% csrf_token %}
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button type="submit" name="inc" value={{item.id}} class="btn btn btn-light" style="background-color: #6a11cb;color: white;"> (+) </button>
+                      <button type="submit" name="del" value={{item.id}} class="btn btn btn-light" style="background-color: #6a11cb;color: white;"> Del </button>
+                      <button type="submit" name="dec" value={{item.id}} class="btn btn btn-light" style="background-color: #6a11cb;color: white;"> (-) </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      </div>
+    </div>
+  </section>
+    <!-- <table class="table table-bordered">
         <caption class=""> {{itemCount}} Items in total</caption>
         <thead class="table-light">
           <tr>
@@ -60,8 +134,7 @@
               </td>
             </tr>
           {% endfor %}
-          <!--kalo kurang row tambah pake <tr></tr>-->
         </tbody>
-      </table>
+      </table> -->
     <!--Item Table-->
 {% endblock content %}
