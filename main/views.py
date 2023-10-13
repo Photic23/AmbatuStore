@@ -1,6 +1,6 @@
 import datetime
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from main.forms import ItemForm
 from django.shortcuts import render
 from django.urls import reverse
@@ -12,6 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages  
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -32,7 +33,9 @@ def show_main(request):
 @login_required(login_url='/login')
 def create_item(request):
     form = ItemForm(request.POST or None)
+
     if request.method == "POST":
+        form = ItemForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save(commit=False)
             product.user = request.user
@@ -41,6 +44,37 @@ def create_item(request):
     
     context = {'form': form}
     return render(request, "create_item.html", context)
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        user = request.user
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        image = request.FILES.get('image')
+
+        new_item = item(user=user, name=name, amount=amount, description=description, image = image)
+        new_item.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def del_product_ajax(request):
+    if request.method == 'POST':
+        items = item.objects.filter(user=request.user)
+        deletedItem = items.get(pk = request.POST.get('id'))
+        deletedItem.delete()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+def get_product_json(request):
+    product_item = item.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
 
 @login_required(login_url='/login')
 def show_items(request):

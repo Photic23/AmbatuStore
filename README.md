@@ -120,6 +120,7 @@ Tugas 5:
     - <th>, define head pada table
     - <tr>, define row pada table
     - <title>, define judul pada dokumen
+
 3. Bootstrap :
     - Bootstrap menggunakan gaya dan komponen yang telah didefinisikan, yang memiliki tampilan yang sudah jadi dan dapat digunakan secara langsung.
     - Bootstrap memiliki file CSS yang lebih besar dibandingkan dengan Tailwind CSS karena termasuk banyak komponen yang telah didefinisikan.
@@ -138,3 +139,30 @@ Tugas 5:
     - saya menambahkan fungsi penamaan file gambar pada model
     - saya menggunakan dropzone dari github untuk bisa custom input image pada create_item
     - saya menggunakan image url untuk mendisplay image pada show item
+
+
+Tugas 6
+1. asynchronous programming:
+    event handling dapat dilakukan secara tidak bertahap dan bersamaan, program tidak harus menunggu satu event handling selesai untuk melakukan event handling lainnya. 
+   synchronous programming:
+    event handling dilakukan secara bertahap, program menyelesaikan event handling secara berurutan menunggu event handling yg sedang dihandle selesai dahulu.
+2. paradigma event-driven programming dalam AJAX
+    program pada AJAX dibuat untuk handling aksi dari user, misalnya pada pembuatan sebuah event handler untuk menghandle sebuah event yang terjadi, atau sebuah callback function ketika pemanggilan suatu fungsi selesai.
+3. Penerapan asynchronous programming pada ajax dilakukan dengan penggunaan async dan await, untuk fungsi yang promise-based. penerapannya dapat juga dilakukan dengan penggunaan fetch yang dapat mengambil resource dari seluruh jaringan secara asinkronus. 
+4. Fetch API:
+    - ada native dari javascript tanpa perlu import library.
+    - menggunakan approach promise-based
+    - menjadi standar web modern dan direkomendasikan W3C
+   JQuery:
+    - perlu mengimport library dahulu
+    - menggunakan approach callback-based, perlu handling dalam kasus eror
+    - banyak modul yang digunakan sudah outdated
+   Jadi lebih baik untuk menggunakan Fetch API karena handling error yang lebih mudah, lebih modern, dan direkomendasikan oleh W3C
+5. 
+- saya membuat fungsi di views.py untuk handle get, post, dan delete, menggunakan ajax.
+- saya membuat path di urls.py untuk mengarahkan ke fungsi di views dan dapat dipanggil oleh script.
+- saya menambahkan fungsi script untuk mengambil seluruh object item milik user daalam bentuk JSON(udah JSON dari views).
+- saya menambahkan fungsi script untuk handling refresh product dan jumlah product.
+- saya menyesuaikan struktur card yang sudah ada dengan fungsi refresh yang baru-
+- saya menambahkan bagian modal, button untuk mentrigger event handling munculnya modal, dan fungsi untuk menambah produk melalui modal
+- saya menambahkan fungsi untuk handling delete product.

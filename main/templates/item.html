@@ -31,110 +31,162 @@
 
   <!--Item Table-->
   <section style="background-color: #eee;">
-    <h1>{{itemCount}} {{username}}'s Items</h1>
-    <div class="container -5">
-      <div class="row justipyfy-content-center">
-      {% for item in items %}
-        {% if forloop.last %}
-          <div class="col-md-8 col-lg-6 col-xl-4">
-            <div class="card text-black my-3 gradient-background">
-              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
-              <img src="{{ item.image.url }}"
-                class="card-img-top" alt="Apple Computer" style="width: auto; aspect-ratio: 1 / 1;" />
-              <div class="card-body">
-                <div class="text-center">
-                  <h5 class="card-title">{{item.name}}</h5>
-                  <p class="text-muted mb-4">{{item.description}}</p>
-                </div>
-                <div>
-                  <div class="d-flex justify-content-between">
-                    <span>Item Price</span><span>$5,999</span>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <span>Item Stock</span><span>{{item.amount}}</span>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-center total font-weight-bold mt-4">
-                  <form method="POST">
-                    {% csrf_token %}
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="submit" name="inc" value={{item.id}} class="btn btn-light" style="background-color: #6a11cb;color: white;"> (+) </button>
-                      <button type="submit" name="del" value={{item.id}} class="btn btn-light" style="background-color: #6a11cb;color: white;"> Del </button>
-                      <button type="submit" name="dec" value={{item.id}} class="btn btn-light" style="background-color: #6a11cb;color: white;"> (-) </button>
+    <h1><span id="countItem">{{itemCount}}</span> {{username}}'s Items</h1>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Tambahin Item Baru Kang</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <form id="form" onsubmit="return false;">
+                      {% csrf_token %}
+                      <div class="mb-3">
+                          <label for="name" class="col-form-label">Name:</label>
+                          <input type="text" class="form-control" id="name" name="name"></input>
+                      </div>
+                      <div class="mb-3">
+                          <label for="amount" class="col-form-label">Amount:</label>
+                          <input type="number" class="form-control" id="amount" name="amount"></input>
+                      </div>
+                      <div class="mb-3">
+                          <label for="description" class="col-form-label">Description:</label>
+                          <textarea class="form-control" id="description" name="description"></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label for="image" class="col-form-label">Description:</label>
+                        <input type="file" class="form-control" id="my-dropzone" name="image"></input>
                     </div>
                   </form>
-                </div>
               </div>
-            </div>
-          </div>          
-        {% else %}
-          <div class="col-md-8 col-lg-6 col-xl-4">
-            <div class="card text-black my-3">
-              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
-              <img src="{{ item.image.url }}"
-                class="card-img-top" alt="Apple Computer" style="width: auto; aspect-ratio: 1 / 1;" />
-              <div class="card-body">
-                <div class="text-center">
-                  <h5 class="card-title">{{item.name}}</h5>
-                  <p class="text-muted mb-4">{{item.description}}</p>
-                </div>
-                <div>
-                  <div class="d-flex justify-content-between">
-                    <span>Item Price</span><span>$5,999</span>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <span>Item Stock</span><span>{{item.amount}}</span>
-                  </div>
-                </div>
-                <div class="d-flex justify-content-center total font-weight-bold mt-4">
-                  <form method="POST">
-                    {% csrf_token %}
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="submit" name="inc" value={{item.id}} class="btn btn btn-light" style="background-color: #6a11cb;color: white;"> (+) </button>
-                      <button type="submit" name="del" value={{item.id}} class="btn btn btn-light" style="background-color: #6a11cb;color: white;"> Del </button>
-                      <button type="submit" name="dec" value={{item.id}} class="btn btn btn-light" style="background-color: #6a11cb;color: white;"> (-) </button>
-                    </div>
-                  </form>
-                </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-light" style="background-color: #6a11cb; color: white;" id="button_add" data-bs-dismiss="modal">Tambah Item</button>
               </div>
-            </div>
           </div>
-        {% endif %}
-      {% endfor %}
+      </div>
+    </div>
+    <div class="container -5">
+      <div class="row justify-content-center" id="tesPutItem">
+        <!--bagian script-->
+      </div>
+      <div style="display: flex; justify-content: center;" class="mb-4 mt-2">
+        <button type="button" class="btn btn-light " data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #6a11cb ;color: white;">Create Item (AJAX)</button>
       </div>
     </div>
   </section>
-    <!-- <table class="table table-bordered">
-        <caption class=""> {{itemCount}} Items in total</caption>
-        <thead class="table-light">
-          <tr>
-            <th scope="col">No.</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in items %}
-            <tr>
-              <th scope="row">{{item.id}}</th>
-              <td>{{item.name}}</td>
-              <td>{{item.description}}</td>
-              <td>{{item.amount}}</td>
-              <td>
-                <form method="POST">
-                  {% csrf_token %}
-                  <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="submit" name="inc" value={{item.id}} class="btn btn-primary" style="background-color: #542ff7;color: white;"> (+) </button>
-                    <button type="submit" name="del" value={{item.id}} class="btn btn-primary" style="background-color: #542ff7;color: white;"> Del </button>
-                    <button type="submit" name="dec" value={{item.id}} class="btn btn-primary" style="background-color: #542ff7;color: white;"> (-) </button>
+
+  <script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+    async function refreshProducts() {
+
+        document.getElementById("tesPutItem").innerHTML = ""
+        const products = await getProducts()
+        let htmlString = ``
+        for(let i = 0;i<products.length;i++) {
+          if(i== products.length-1){
+            htmlString += `
+              <div class="col-md-8 col-lg-6 col-xl-4">
+              <div class="card text-black my-3 gradient-background">
+                <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+                <img src="../../media/${products[i].fields.image}"
+                  class="card-img-top" alt="Apple Computer" style="width: auto; aspect-ratio: 1 / 1;" />
+                <div class="card-body">
+                  <div class="text-center">
+                    <h5 class="card-title">${products[i].fields.name}</h5>
+                    <p class="text-muted mb-4">${products[i].fields.description}</p>
                   </div>
-                </form>
-              </td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table> -->
-    <!--Item Table-->
+                  <div>
+                    <div class="d-flex justify-content-between">
+                      <span>Item Price</span><span>$5,999</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <span>Item Stock</span><span>${products[i].fields.amount}</span>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                    <form method="POST">
+                      {% csrf_token %}
+                      <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="submit" name="inc" value=${products[i].pk} class="btn btn-light" style="background-color: #6a11cb;color: white;"> (+) </button>
+                        <button type="submit" name="del" value=${products[i].pk} class="btn btn-light" onclick="delProduct(${products[i].pk})" style="background-color: #6a11cb;color: white;"> Del </button>
+                        <button type="submit" name="dec" value=${products[i].pk} class="btn btn-light" style="background-color: #6a11cb;color: white;"> (-) </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            `
+          }else{
+            htmlString += `
+              <div class="col-md-8 col-lg-6 col-xl-4">
+              <div class="card text-black my-3">
+                <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+                <img src="../../media/${products[i].fields.image}"
+                  class="card-img-top" alt="Apple Computer" style="width: auto; aspect-ratio: 1 / 1;" />
+                <div class="card-body">
+                  <div class="text-center">
+                    <h5 class="card-title">${products[i].fields.name}</h5>
+                    <p class="text-muted mb-4">${products[i].fields.description}</p>
+                  </div>
+                  <div>
+                    <div class="d-flex justify-content-between">
+                      <span>Item Price</span><span>$5,999</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <span>Item Stock</span><span>${products[i].fields.amount}</span>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                    <form method="POST">
+                      {% csrf_token %}
+                      <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="submit" name="inc" value=${products[i].pk} class="btn btn btn-light" style="background-color: #6a11cb;color: white;"> (+) </button>
+                        <button type="submit" name="del" value=${products[i].pk} class="btn btn btn-light" onclick="delProduct(${products[i].pk})" style="background-color: #6a11cb;color: white;"> Del </button>
+                        <button type="submit" name="dec" value=${products[i].pk} class="btn btn btn-light" style="background-color: #6a11cb;color: white;"> (-) </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            `
+          }
+        }
+
+        document.getElementById("countItem").innerHTML = ""
+        let tempString = `<span>${products.length}</span>`
+        document.getElementById("countItem").innerHTML = tempString
+        document.getElementById("tesPutItem").innerHTML = htmlString
+    }
+    refreshProducts()
+    
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    function delProduct(itemID) {
+      fetch("{% url 'main:del_product_ajax' %}", {
+            method: "POST",
+            body: JSON.stringify({
+              id: itemID,
+            }),
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+
+    document.getElementById("button_add").onclick = addProduct
+  </script>
 {% endblock content %}
