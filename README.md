@@ -2,7 +2,7 @@ Nama    : Naufal Mahdy Hanif
 NPM     : 2206082335
 Kelas   : E
 Adaptable : https://ambatustore.adaptable.app/
-
+//Tes Redeploy
 
 Tugas 2 :
 1.
