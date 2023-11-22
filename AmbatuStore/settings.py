@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "main",
     'widget_tweaks',
+    'corsheaders',
+    'authentication'
 ]
 
 MIDDLEWARE = [
@@ -56,11 +58,13 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
+
 ]
 
 ROOT_URLCONF = "AmbatuStore.urls"
 
-CSRF_TRUSTED_ORIGINS = ['https://ambatustore.adaptable.app']
+CSRF_TRUSTED_ORIGINS = ['https://naufal-mahdy-tugas.pbp.cs.ui.ac.id']
 
 TEMPLATES = [
     {
@@ -146,3 +150,11 @@ MEDIA_URL = '/media/'
   
 # Path where media is stored  
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Extra attribute for tugas 9
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
