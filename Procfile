@@ -1,2 +1,2 @@
-release: django-admin migrate
-web: gunicorn AmbatuStore.wsgi
+release: django-admin migrate --noinput
+web: gunicorn aplikasi_django.wsgi --log-file -
